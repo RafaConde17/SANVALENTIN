@@ -1,0 +1,381 @@
+* { box-sizing: border-box; 
+
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
+    url("fotos/fondo.avif") center/cover no-repeat fixed;
+  font-family: "Segoe UI", sans-serif;
+   box-sizing: border-box;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  
+    color: var(--color-texto);
+
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ========== HEADER ========== */
+.header {
+    background: var(--color-secundario);
+    color: #fff;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.2rem;
+}
+
+.nav a {
+    margin-left: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav a:hover {
+    color: #fff;
+}
+
+/* media query al final del CSS */
+@media (max-width: 768px) {
+    .hero {
+        background-image: url('carta2.png');
+    }
+}
+.hero h2 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+     font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* ========== HERO ========== */
+.hero {
+    position: relative;        /* para poder colocar contenido encima */
+     flex: 1;            /* ocupa toda la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgba(247, 249, 246, 0.964);
+    background: var(--color-primario);
+    padding: 0;
+    
+    /* Imagen de fondo */
+    background-image: url('carta.jpg');  /* reemplaza con tu imagen */
+    background-size: cover;               /* cubre todo el hero */
+    background-position: center;          /* centra la imagen */
+    background-repeat: no-repeat;         /* no repetir */
+}
+
+/* ========== BOTÓN ========== */
+.btn {
+    background: #fff;
+    color: var(--color-primario);
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    width: 100%;
+    background: var(--color-secundario);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+/* ESCENA */
+.scene {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  margin-top: 130px;
+}
+
+/* LLUVIA DE CORAZONES */
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.rain-heart {
+  position: absolute;
+  top: -40px;
+  animation: heartRain linear forwards;
+  opacity: .85;
+}
+
+@keyframes heartRain {
+  from {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: .9;
+  }
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* CAJA EXTERNA (BORDE) */
+.heart-box-outer {
+  position: relative;
+  width: 320px;
+  height: 270px;
+  clip-path: polygon(
+    50% 96%, 12% 65%, 8% 40%, 20% 20%, 35% 10%,
+    50% 20%, 65% 10%, 80% 20%, 92% 40%, 88% 65%
+  );
+  background: linear-gradient(145deg, #8f0f0f, #4a0909);
+  z-index: 2;
+}
+
+/* CAJA INTERIOR (PARTE REAL) */
+.heart-box-inner {
+  position: absolute;
+  inset: 12px; /* ajusta grosor del borde */
+  clip-path: inherit;
+  background: radial-gradient(circle at 50% 30%, #ffffff, #f3eaea 80%);
+  box-shadow: inset 0 15px 25px rgba(0,0,0,.15),
+              inset 0 -10px 20px rgba(0,0,0,.1);
+  z-index: 3;
+  pointer-events: auto;
+}
+
+/* IMAGEN INTERIOR DEL CORAZÓN */
+.heart-image {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(245, 244, 244, 0.899), rgba(245, 243, 243, 0.948)),
+    url("fotos/corazonimagen.jpg") center/cover no-repeat;
+  z-index: 4;
+}
+
+/* TAPA */
+.lid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.6)),
+    url("fotos/corazonimagen.png") center/70% no-repeat,
+    linear-gradient(145deg,#860a0a,#820c0cd1);
+  clip-path: inherit;
+  transform-origin: top center;
+  transition: transform 1s cubic-bezier(.2,.8,.2,1);
+  box-shadow: inset 0 10px 20px rgba(209, 74, 74, 0.08),
+              inset 0 -20px 30px rgba(0,0,0,.7);
+  z-index: 10;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  pointer-events: auto;
+}
+
+.open .lid {
+  transform: rotateX(-115deg) translateY(-10px);
+  pointer-events: none;
+}
+
+/* INTERIOR: CHOCOLATES */
+.chocolates {
+  position: absolute;
+  top: 12%;
+  left: 10%;
+  right: 10%;
+  bottom: 8%;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+/* CHOCOLATES INDIVIDUALES */
+.choco{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+
+  background: 
+    radial-gradient(circle at 30% 25%, #c1876b 0%, #8a4b2a 70%, #3b1d0f 100%);
+
+  box-shadow:
+    inset 0 4px 6px rgba(255,255,255,.3),
+    inset 0 -6px 12px rgba(0,0,0,.6),
+    0 6px 12px rgba(0,0,0,.6);
+
+  transition: all 0.35s ease;
+}
+
+.choco::after{
+  content:"";
+  position:absolute;
+  top:8px;
+  left:10px;
+  width:20px;
+  height:12px;
+  border-radius:50%;
+  background: rgba(255,255,255,0.4);
+  filter: blur(3px);
+}
+
+.choco:hover{
+  transform: translateY(-6px) scale(1.2);
+  box-shadow:
+    inset 0 6px 10px rgba(255,255,255,.4),
+    0 14px 28px rgba(0,0,0,.7);
+}
+
+
+/* BOTÓN CERRAR CAJA */
+.close-box {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 24px;
+  border: none;
+  border-radius: 30px;
+  background: #e11d48;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(0,0,0,.5);
+  transition: .3s;
+  z-index: 3;
+}
+
+.close-box:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
+/* BOTÓN MÚSICA */
+.music-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: rgba(0,0,0,.4);
+  color: white;
+  font-size: 18px;
+  z-index: 6;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+}
+
+.popup-content {
+  width: min(90vw, 420px);
+  max-height: 85vh;
+  overflow: auto;
+  background: 
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), /* capa semi-transparente para texto legible */
+    url("fotos/popupfondo.avif") center/cover no-repeat; /* tu imagen de fondo */
+  padding: 32px 44px;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff; /* blanco para resaltar sobre fondo oscuro */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 20;
+}
+
+
+/* BOTÓN CERRAR POPUP O CERRAR CHOCOLATES */
+
+.popup-content button {
+  margin-top: 15px;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 30px;
+  background: #e11d48; /* mismo estilo que antes */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.popup button:hover {
+  transform: scale(1.08);
+}
+
+
+.popup-img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  object-fit: contain;
+  box-shadow: 0 10px 25px rgba(0,0,0,.3);
+}
+/* RAMO */
+.bouquet {
+  position: absolute;
+  bottom: 160px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.6);
+  width: 300px;
+  max-width: 80vw;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,.6));
+}
+
+/* HIDDEN */
+.hidden { display: none; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .scene { transform: scale(1.05); }
+  .heart-box-outer { width: 340px; height: 290px; }
+  .choco { width: 46px; height: 46px; font-size: 1rem; }
+  .close-box { bottom: -55px; font-size: .9rem; padding: 10px 22px; }
+  .popup-content { width: 88%; padding: 26px 22px; font-size: 1rem; }
+}

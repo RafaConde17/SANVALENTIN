@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Caja de Chocolates ❤️🍫</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-content">
+        <h1 class="logo">Sarang</h1>
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+        </nav>
+    </div>
+</header>
+<!-- Hero principal -->
+<section class="hero">
+    <div class="container hero-content">
+
+
+<!-- LLUVIA DE CORAZONES -->
+<div id="hearts-bg" class="hearts-bg hidden"></div>
+
+<div class="scene">
+
+  <!-- RAMO DETRÁS -->
+  <img src="fotos/ramo.png" class="bouquet" alt="Ramo de flores">
+
+  <!-- CAJA CORAZÓN (EXTERNA = BORDE) -->
+  <div class="heart-box-outer">
+
+    <!-- CAJA INTERIOR (INTERIOR DE LA CAJA) -->
+    <div class="heart-box-inner" id="box">
+
+      <!-- IMAGEN INTERNA DEL CORAZÓN -->
+      <div class="heart-image"></div>
+
+      <!-- BOTÓN MÚSICA -->
+      <button id="musicBtn" class="music-btn">🔊</button>
+
+      <!-- TAPA -->
+      <div class="lid"></div>
+
+      <!-- INTERIOR: chocolates -->
+      <div class="chocolates"></div>
+
+    </div> <!-- FIN heart-box-inner -->
+
+  </div> <!-- FIN heart-box-outer -->
+
+  <!-- BOTÓN CERRAR CAJA -->
+  <button class="close-box hidden" id="closeBox">
+    Cerrar caja ❤️
+  </button>
+
+</div> <!-- FIN scene -->
+
+<!-- POPUP -->
+<div class="popup hidden" id="popup">
+  <div class="popup-content" id="popupContent">
+    <img id="popupImage" class="popup-img hidden" alt="Popup imagen">
+    <p id="popupText"></p>
+    <button id="closePopup">Cerrar ✕</button>
+  </div>
+</div>
+
+<!-- MÚSICA -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; <span id="year"></span> Mi Página - Todos los derechos reservados</p>
+</footer>
+
+
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

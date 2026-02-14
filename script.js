@@ -25,7 +25,7 @@ const messages = [
   "Porque siempre a tu lado todo es felicidad✨",
   "Mi persona favorita ❤️",
   "Gracias por existir en mi vida 💕",
-  "Contigo lo quiero todo 🫶",
+  "Un regalito para tu ropita RIYVVRUU8MYNVTCP44 🫶",
   "Para siempre y por siempre  🍫",
   "Mi lugar favorito eres tú 💘",
   "Eres mi paz y yo tu calma 🌙",
@@ -175,3 +175,4 @@ function stopHeartsRain(){
   heartsBg.innerHTML = "";
   heartsBg.classList.add("hidden");
 }
+
